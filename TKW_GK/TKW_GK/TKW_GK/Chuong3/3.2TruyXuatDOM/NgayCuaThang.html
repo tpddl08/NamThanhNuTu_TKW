@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale=1">
+        <title>Ngày của Tháng</title>
+        <style>
+            .bangtinh {
+                width: 400px;
+                height: 250px;
+                background-color: rgb(177, 156, 247);
+                margin-top: 100px;
+                margin-left: 30px;
+                border-radius: 5px;
+            }
+            .nhap {
+                width: 30px;
+                height: 30px;
+            }
+            button {
+                margin-top: 20px;
+                margin-left: 300px;
+            }
+            input {
+                margin-top: 20px;
+                margin-left: 10px;
+                width: 300px;
+                height: 30px;
+                border-radius: 5px;
+            }
+            span {
+                font-family: Arial, Helvetica, sans-serif;
+                margin-left: 10px;
+                margin-top: 30px;
+            
+            }
+         
+            
+
+        </style>   
+    </head>
+    <body>
+        <div class="bangtinh">
+            
+            <br>
+            <span><b>Nhập tháng</b></span><br>
+            <input type="text" id="thang"><br>
+            <button onclick="check()">Kiểm tra</button>
+            <div id="ngay" style="margin-left: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"></div>
+        </div>
+        <script>
+            function check(){
+                const thang = document.getElementById('thang').value;
+                let ngay;
+                switch(thang){
+                    case "1":
+                    case "3":
+                    case "5":
+                    case "7":
+                    case "8":
+                    case "10":
+                    case "12":
+                        ngay="Tháng "+ thang +" có 31 ngày";
+                        break;
+                    case "4":
+                    case "6":
+                    case "9":
+                    case "11":
+                        ngay="Tháng "+ thang +" có 30 ngày";
+                        break;
+                    case "2":    
+                        ngay="Tháng 2 có 28 hoặc 29 ngày";
+                        break;
+                    default:
+                        ngay ="Tháng không hợp lệ!"; 
+                }
+                
+                document.getElementById('ngay').textContent=ngay;
+                
+            }
+            
+        </script>
+    </body>
+</html>        
+

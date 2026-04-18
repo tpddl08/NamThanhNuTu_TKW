@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale=1">
+        <title>Kiểm tra năm</title>
+        <style>
+            .bangtinh {
+                width: 400px;
+                height: 200px;
+                background-color: rgb(177, 156, 247);
+                margin-top: 100px;
+                margin-left: 30px;
+                border-radius: 5px;
+            }
+            .nhap {
+                width: 30px;
+                height: 30px;
+            }
+            button {
+                margin-top: 20px;
+                margin-left: 300px;
+            }
+            input {
+                margin-top: 20px;
+                margin-left: 10px;
+                width: 300px;
+                height: 30px;
+                border-radius: 5px;
+            }
+            span {
+                font-family: Arial, Helvetica, sans-serif;
+                margin-left: 10px;
+                margin-top: 30px;
+            
+            }
+         
+            
+
+        </style>   
+    </head>
+    <body>
+        <div class="bangtinh">
+            
+            <br>
+            <span><b>Nhập năm cần kiểm tra</b></span><br>
+            <input type="text" id="nam"><br>
+            <button onclick="check()">Kiểm tra</button>
+            <div id="isLeapYear" style="margin-left: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"></div>
+        </div>
+        <script>
+            function check(){
+                const nam = Number(document.getElementById('nam').value);
+                
+                let isLeapYear=false;
+
+                if(nam%400==0) {
+                    isLeapYear=true;
+                }
+                else if (nam%4==0 && nam%100!=0){
+                    isLeapYear=true;
+                }
+                if (isLeapYear){
+                    alert(nam + " là năm nhuận");
+                }
+                else{
+                    alert(nam + " là năm không nhuận");
+                }
+                
+            }
+            
+        </script>
+    </body>
+</html>        
+

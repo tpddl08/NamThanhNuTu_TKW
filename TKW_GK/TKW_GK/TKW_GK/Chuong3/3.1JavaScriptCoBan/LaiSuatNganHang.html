@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale=1">
+        <title>Lãi suất</title>
+        <style>
+            .bangtinh {
+                width: 400px;
+                height: 250px;
+                background-color: rgb(177, 156, 247);
+                margin-top: 100px;
+                margin-left: 30px;
+                border-radius: 5px;
+            }
+            .nhap {
+                width: 30px;
+                height: 30px;
+            }
+            button {
+                margin-top: 20px;
+                margin-left: 300px;
+            }
+            input {
+                margin-top: 20px;
+                margin-left: 10px;
+                width: 300px;
+                height: 30px;
+                border-radius: 5px;
+            }
+            span {
+                font-family: Arial, Helvetica, sans-serif;
+                margin-left: 10px;
+                margin-top: 30px;
+            
+            }
+         
+            
+
+        </style>   
+    </head>
+    <body>
+        <div class="bangtinh">
+            <span><b>Số tiền vay</b></span><br>
+            <input type="text" id="tienvay"><br>
+            <span><b>Số năm vay</b></span><br>
+            <input type="text" id="nam"><br>
+            <button onclick="tinh()">Tính</button>
+            <div id="tientra" style="margin-left: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"></div>
+        </div>
+        <script>
+            function tinh(){
+                const tienvay = Number(document.getElementById('tienvay').value);
+                const nam = Number(document.getElementById('nam').value);
+                
+                const tinh = tienvay +( tienvay * 0.08 * nam);
+                document.getElementById('tientra').textContent ="Số tiền cần trả: " + tinh + " VDN";
+            }
+            
+        </script>
+    </body>
+</html>        
+

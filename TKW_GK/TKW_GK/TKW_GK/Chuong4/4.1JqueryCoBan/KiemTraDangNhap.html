@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <style>
+        table {
+            border: 1px solid #000000;
+           
+        }
+
+        td {
+            border: 1px solid #000000;
+            padding: 10px;
+        }
+
+        .cot3 {
+            background-color: bisque;
+            border: 1px solid black;
+        }
+    </style>
+
+    <table align="center"">
+        <tr>
+            <td><b>Username<b></td>
+            <td><input type="text" id="username"></td>
+        </tr>
+        <tr>
+            <td><b>Password</b></td>
+            <td><input type="password" id="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="cot3">
+                <p id="error-message" style="color: red; display: none;">Sai thông tin đăng nhập!</p>
+                <p id="correct-message" style="color: green; display: none;">Chúc mừng, bạn đã đăng nhập thành công!</p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Login" id="login-button"></td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#login-button').on('click', function() {
+                var username = $('#username').val(); 
+                var password = $('#password').val(); 
+                if (username === 'admin' && password === 'admin') {
+                    $('#correct-message').show();
+                    $('#error-message').hide();
+                } else {
+                    $('#error-message').show();
+                    $('#correct-message').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

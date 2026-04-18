@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng Quản lý sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #3d3d78;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Thêm sản phẩm mới</h2>
+        <input type="text" id="newProductName" placeholder="Nhập tên sản phẩm" style="height: 30px; width: 300px;"/>
+        <button onclick="addProduct()" style="height: 40px; width: 80px; background-color: #3d3d78; border-radius: 5px;"><b style="color: white;">Thêm</b></button>
+        <p id="message"></p>
+    </div>
+    <h2>Danh sách sản phẩm</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+    </table>
+    <script>
+        let products = [
+            "Sony Xperia",
+            "Samsung Galaxy",
+            "Nokia 6",
+            "Xiaomi Redmi Note 4",
+            "Apple iPhone 6S",
+            "Xiaomi Mi 5s Plus",
+            "Apple iPhone 8 Plus",
+            "Fujitsu F-04E",
+            "Oppo A71"
+        ];
+        function displayProducts() {
+            const productTable = document.getElementById("productTable");
+            productTable.innerHTML = "";
+            products.forEach((product, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td onclick="editProduct(${index})">${product}</td>
+                    <td>
+                        <button onclick="deleteProduct(${index})">Xóa</button>
+                    </td>
+                `;
+                productTable.appendChild(row);
+            });
+            const totalRow = document.createElement("tr");
+            totalRow.innerHTML = `<td colspan="3">${products.length} sản phẩm</td>`;
+            productTable.appendChild(totalRow);
+        }
+        function addProduct() {
+            const newProductName = document.getElementById("newProductName").value.trim();
+            const message = document.getElementById("message");
+            if (newProductName) {
+                products.push(newProductName);
+                message.textContent = "Sản phẩm đã được thêm!";
+                message.style.color = "green";
+                displayProducts();
+            } else {
+                message.textContent = "Vui lòng nhập tên sản phẩm!";
+                message.style.color = "red";
+            }
+            document.getElementById("newProductName").value = ""; 
+        }
+        function editProduct(index) {
+            const newName = prompt("Nhập tên mới cho sản phẩm:", products[index]);
+            if (newName && newName.trim() !== "") {
+                products[index] = newName.trim();
+                displayProducts();
+            }
+        }
+        function deleteProduct(index) {
+            if (confirm(`Bạn có chắc chắn muốn xóa sản phẩm "${products[index]}"?`)) {
+                products.splice(index, 1);
+                displayProducts();
+            }
+        }
+        displayProducts();
+    </script>
+</body>
+</html>
